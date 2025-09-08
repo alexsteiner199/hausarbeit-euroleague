@@ -1,0 +1,302 @@
+##############################################################################
+########################## Raphael Alexander Steiner##########################
+########################## S-23-454-580             ##########################
+########################## Hausarbeit Wirtschaft    ##########################
+########################## Homecourt Advantage      ##########################
+##############################################################################
+
+
+
+url <- "https://www.proballers.com/basketball/league/177/euroleague/schedule"
+
+page <- read_html(url)
+
+# Spieltabelle extrahieren
+games <- page %>%
+  html_nodes("table") %>%
+  html_table(fill = TRUE) %>%
+  .[[1]] # erste Tabelle nehmen
+
+# Daten bereinigen (abhängig vom Format!)
+head(games)
+
+##########################################################################
+
+# Beispiel: Daten einlesen, wenn noch nicht geschehen
+# alle_spiele <- read_csv("...deine_datei.csv")
+
+# 1. Time-Spalte löschen (falls vorhanden)
+games <- games %>%
+  select(-`Time (CET)`)
+
+# 2. Punkte extrahieren aus "Result" (z. B. "87-86")
+games <- games %>%
+  mutate(
+    `Punkte Heim` = as.numeric(stringr::str_extract(Result, "^\\d+")),
+    `Punkte Gast` = as.numeric(stringr::str_extract(Result, "\\d+$"))
+  )
+
+# 3. Home_W berechnen
+games <- games %>%
+  mutate(Home_W = ifelse(`Punkte Heim` > `Punkte Gast`, 1, 0))
+
+# 4. Aufräumen: Spalte "Result" optional löschen
+ games <- games %>%
+  select(-Result)
+
+# 6. CSV speichern
+write_csv(games, "euroleague_2024-25_bereinigt.csv")
+
+message("✅ CSV gespeichert: euroleague_bereinigt.csv")
+
+#########################################################################
+
+#log. Regression Heimvorteil regressiert auf Sieg
+glm(Home_W ~ 1, family = binomial(), data= games)
+
+#########################################################################
+
+#Sample für Saison 2024/25 erstellen mit folgenden Variablen: ID, Datum, Heimteam,
+#Auswärtsteam, Punkte Heimteam, Punkte Auswärtsteam, Durchschnittliche Zuschauerzahlen, Budget Gesamt, Budget Spielergehälter, Punktedifferenz.
+
+library(rvest)
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(tidyr)
+library(purrr)
+library(readr)
+
+
+# 📥 CSV laden
+df <- read_csv("euroleague_2024-25_bereinigt.csv")
+
+# 🧩 Zuschauerzahlen-Tabelle
+zuschauer_df <- tibble::tribble(
+  ~Heimteam, ~Zuschauer,
+  "Partizan Mozzart Bet Belgrad", 18486,
+  "Crvena zvezda Meridianbet Belgrad", 18239,
+  "Panathinaikos Aktor Athen", 17111,
+  "Žalgiris Kaunas", 14895,
+  "Olympiakos Piräus", 11546,
+  "FC Bayern München", 10872,
+  "Fenerbahçe Beko Istanbul", 10785,
+  "Cazoo Baskonia Vitoria-Gasteiz", 9485,
+  "Anadolu Efes SK Istanbul", 9220,
+  "Alba Berlin", 9180,
+  "EA7 Emporio Armani Milano", 9095,
+  "Real Madrid", 8899,
+  "Virtus Segafredo Bologna", 7792,
+  "LDLC ASVEL Villeurbanne", 7237,
+  "Paris Basketball", 7044,
+  "FC Barcelona", 6212,
+  "AS Monaco", 3874
+)
+
+# 🧩 Budgetdaten
+budget_df <- tibble::tribble(
+  ~Heimteam, ~Budget_Total, ~Budget_Spieler,
+  "Real Madrid", 45, 20.5,
+  "Panathinaikos Aktor Athen", 37, 20.5,
+  "Olympiakos Piräus", 37, 20.5,
+  "Anadolu Efes SK Istanbul", 34.5, 17.2,
+  "Fenerbahçe Beko Istanbul", 33.5, 16.5,
+  "FC Barcelona", 32, 15.5,
+  "EA7 Emporio Armani Milano", 39, 14.5,
+  "Crvena zvezda Meridianbet Belgrad", 22, 14.4,
+  "AS Monaco", 29.4, 13.5,
+  "Partizan Mozzart Bet Belgrad", 23, 13.2,
+  "Virtus Segafredo Bologna", 25, 10.0,
+  "FC Bayern München", 33, 8.0,
+  "Cazoo Baskonia Vitoria-Gasteiz", 14, 8.0,
+  "Žalgiris Kaunas", 17.7, 7.5,
+  "Maccabi Tel Aviv", 19, 6.5,
+  "LDLC ASVEL Villeurbanne", 16.2, 5.8,
+  "Paris Basketball", 18.9, 5.6,
+  "Alba Berlin", 14.6, 4.1
+)
+
+# 🧬 Datensatz verknüpfen
+df_renamed <- df %>%
+  rename(Heimteam = Home, Auswärtsteam = Away)
+
+df_enriched <- df_renamed %>%
+  left_join(zuschauer_df, by = "Heimteam") %>%
+  left_join(budget_df, by = "Heimteam") %>%
+  mutate(Punktedifferenz = `Punkte Heim` - `Punkte Gast`)
+
+
+# 💾 Ergebnis speichern
+write_csv(df_enriched, "euroleague_2024_25_komplett.csv")
+
+message("✅ Datensatz mit Zuschauer- und Budgetvariablen gespeichert!")
+
+#########################################################################
+
+#   NAs ersetzen
+
+library(dplyr)
+df <- readr::read_csv("euroleague_2024_25_komplett.csv")
+
+ergänzungen <- tibble::tribble(
+  ~Heimteam,                              ~Zuschauer, ~Budget_Total, ~Budget_Spieler,
+  "Partizan Mozzart Bet Belgrad",         18486,      23,            13.2,
+  "Crvena zvezda Meridianbet Belgrad",    18239,      22,            14.4,
+  "Panathinaikos Aktor Athen",            17111,      37,            20.5,
+  "Žalgiris Kaunas",                      14895,      17.7,          7.5,
+  "Olympiakos Piräus",                    11546,      37,            20.5,
+  "FC Bayern München",                    10872,      33,            8.0,
+  "Fenerbahçe Beko Istanbul",             10785,      33.5,          16.5,
+  "Cazoo Baskonia Vitoria-Gasteiz",       9485,       14,            8.0,
+  "Anadolu Efes SK Istanbul",             9220,       34.5,          17.2,
+  "Alba Berlin",                          9180,       14.6,          4.1,
+  "EA7 Emporio Armani Milano",            9095,       39,            14.5,
+  "Real Madrid",                          8899,       45,            20.5,
+  "Virtus Segafredo Bologna",             7792,       25,            10.0,
+  "LDLC ASVEL Villeurbanne",             7237,       16.2,          5.8,
+  "Paris Basketball",                     7044,       18.9,          5.6,
+  "FC Barcelona",                         6212,       32,            15.5,
+  "AS Monaco",                            3874,       29.4,          13.5,
+  "Maccabi Tel Aviv",                     0,         19,            6.5  # Zuschauer nicht öffentlich
+)
+
+df_final <- df %>%
+  left_join(ergänzungen, by = "Heimteam", suffix = c("", ".neu")) %>%
+  mutate(
+    Zuschauer       = coalesce(Zuschauer, Zuschauer.neu),
+    Budget_Total    = coalesce(Budget_Total, Budget_Total.neu),
+    Budget_Spieler  = coalesce(Budget_Spieler, Budget_Spieler.neu)
+  ) %>%
+  select(-ends_with(".neu"))
+
+colSums(is.na(df_final))
+
+# Welche Heimteams wurden nicht gemappt?
+
+df_final %>%
+  filter(is.na(Zuschauer)) %>%
+  count(Heimteam, sort = TRUE)
+
+df_final <- df_final %>%
+  mutate(Heimteam = case_when(
+    Heimteam == "Olympiacos Piraeus"        ~ "Olympiakos Piräus",
+    Heimteam == "Fenerbahce BEKO"           ~ "Fenerbahçe Beko Istanbul",
+    Heimteam == "Panathinaikos Athens"      ~ "Panathinaikos Aktor Athen",
+    Heimteam == "Anadolu Efes Istanbul"     ~ "Anadolu Efes SK Istanbul",
+    Heimteam == "ALBA Berlin"               ~ "Alba Berlin",
+    Heimteam == "Baskonia"                  ~ "Cazoo Baskonia Vitoria-Gasteiz",
+    Heimteam == "Crvena Zvezda Belgrade"    ~ "Crvena zvezda Meridianbet Belgrad",
+    Heimteam == "EA7 Milano"                ~ "EA7 Emporio Armani Milano",
+    Heimteam == "LDLC ASVEL"                ~ "LDLC ASVEL Villeurbanne",
+    Heimteam == "Partizan"                  ~ "Partizan Mozzart Bet Belgrad",
+    Heimteam == "Segafredo Bologna"         ~ "Virtus Segafredo Bologna",
+    Heimteam == "Zalgiris Kaunas"           ~ "Žalgiris Kaunas",
+    TRUE ~ Heimteam
+  ))
+
+df_final <- df_final %>%
+  left_join(zuschauer_df, by = "Heimteam") %>%
+  left_join(budget_df, by = "Heimteam")
+
+colSums(is.na(df_final))
+
+df_final_clean <- df_final %>%
+  mutate(
+    Zuschauer      = coalesce(Zuschauer.y, Zuschauer.x),
+    Budget_Total   = coalesce(Budget_Total.y, Budget_Total.x),
+    Budget_Spieler = coalesce(Budget_Spieler.y, Budget_Spieler.x)
+  ) %>%
+  select(Date, Heimteam, Auswärtsteam, `Punkte Heim`, `Punkte Gast`, Home_W,
+         Punktedifferenz, Zuschauer, Budget_Total, Budget_Spieler)
+
+# Auf letzte NAs prüfen
+
+colSums(is.na(df_final_clean))
+
+readr::write_csv(df_final_clean, "euroleague_2024_25_final_bereinigt.csv")
+
+#Histogramm Zuschauerzahlen
+
+df_final_clean <- read.csv("euroleague_2024_25_final_bereinigt.csv")
+
+summary(df_final_clean$Zuschauer)
+hist(df_final_clean$Zuschauer, main = "Zuschauer pro Heimteam", xlab = "Zuschauer", col = "darkgreen", breaks = 15)
+
+# Boxplot Budget
+
+boxplot(df_final_clean$Budget_Total, main = "Gesamtbudget (in Mio. €)")
+boxplot(df_final_clean$Budget_Spieler, main = "Spielerbudget (in Mio. €)")
+
+# Steigt die Heimsiegquote mit steigender Zuschauerzahl?
+
+library(dplyr)
+
+df_final_clean %>%
+  mutate(Budget_Gruppe = ntile(Budget_Total, 4)) %>%
+  group_by(Budget_Gruppe) %>%
+  summarise(Heimsiegquote = mean(Home_W), Durchschnitt_Budget = mean(Budget_Total))
+
+# Histogramm Punktedifferenz
+
+hist(
+  df_final_clean$Punktedifferenz,
+  main = "Verteilung der Punktedifferenz",
+  xlab = "Punktedifferenz (Heim - Gast)",
+  ylab = "Anzahl Spiele",
+  col = "steelblue",
+  border = "white",
+  breaks = 15
+)
+
+
+##########################################################################
+
+# Regression 1 mit Home_W als abhängige Variable
+df <- read.csv("euroleague_2024_25_final_bereinigt.csv")
+
+model_logit <- glm(
+  Home_W ~ Zuschauer + Budget_Total + Budget_Spieler,
+  family = binomial(),
+  data = df
+)
+
+summary(model_logit)
+
+# Regression 2 mit Punktedifferenz als abhängige Variable
+
+model_lm <- lm(Punktedifferenz ~ Zuschauer + Budget_Total , data = df)
+
+summary(model_lm)
+
+# Regression 3 mit nur Budget_Spieler als erklärende Variable
+
+model_clean <- lm(Punktedifferenz ~ Budget_Spieler, data = df_final_clean)
+summary(model_clean)
+
+# Visualisierung
+
+library(ggplot2)
+
+ggplot(df_final_clean, aes(x = Budget_Spieler, y = Punktedifferenz)) +
+  geom_point(color = "steelblue", size = 2, alpha = 0.7) +
+  geom_smooth(method = "lm", color = "darkred", se = FALSE) +
+  labs(
+    title = "Einfluss des Spielerbudgets auf die Punktedifferenz",
+    x = "Spielerbudget des Heimteams (in Mio. €)",
+    y = "Punktedifferenz (Heim - Gast)"
+  ) +
+  theme_minimal()
+
+##########################################################################
+
+# Modell ohne Kontrolle für Budget
+model_no_budget <- lm(Punktedifferenz ~ Zuschauer, data = df)
+
+# Modell mit Kontrolle für Budget
+model_with_budget <- lm(Punktedifferenz ~ Zuschauer + Budget_Total, data = df)
+
+summary(model_no_budget)
+summary(model_with_budget)
+
+df_all_seasons <- read.csv("euroleague_seasons_2000-2025_final.csv")
+

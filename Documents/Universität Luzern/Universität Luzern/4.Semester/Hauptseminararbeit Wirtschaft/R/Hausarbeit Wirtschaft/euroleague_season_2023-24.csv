@@ -1,0 +1,332 @@
+Date,Home,Away,Punkte Heim,Punkte Gast,Home_W
+"Oct 5, 2023",Crvena Zvezda Belgrade,LDLC ASVEL,94,73,1
+"Oct 5, 2023",Maccabi Tel Aviv,Partizan,96,81,1
+"Oct 5, 2023",Segafredo Bologna,Zalgiris Kaunas,79,82,0
+"Oct 5, 2023",FC Bayern München,ALBA Berlin,80,68,1
+"Oct 5, 2023",FC Barcelona,Anadolu Efes Istanbul,91,74,1
+"Oct 6, 2023",Fenerbahce BEKO,EA7 Milano,85,82,1
+"Oct 6, 2023",Panathinaikos Athens,Olympiacos Piraeus,78,88,0
+"Oct 6, 2023",Valencia Basket,AS Monaco,70,65,1
+"Oct 6, 2023",Baskonia,Real Madrid,77,79,0
+"Oct 12, 2023",Anadolu Efes Istanbul,Real Madrid,80,103,0
+"Oct 12, 2023",ALBA Berlin,Baskonia,86,91,0
+"Oct 12, 2023",LDLC ASVEL,Partizan,62,88,0
+"Oct 12, 2023",Panathinaikos Athens,FC Bayern München,78,71,1
+"Oct 13, 2023",AS Monaco,Segafredo Bologna,59,83,0
+"Oct 13, 2023",Zalgiris Kaunas,Crvena Zvezda Belgrade,79,74,1
+"Oct 13, 2023",Olympiacos Piraeus,FC Barcelona,68,77,0
+"Oct 13, 2023",Valencia Basket,Fenerbahce BEKO,77,74,1
+"Oct 17, 2023",Partizan,FC Barcelona,83,92,0
+"Oct 17, 2023",Fenerbahce BEKO,Panathinaikos Athens,83,69,1
+"Oct 17, 2023",Anadolu Efes Istanbul,LDLC ASVEL,89,84,1
+"Oct 17, 2023",Baskonia,FC Bayern München,68,76,0
+"Oct 17, 2023",Real Madrid,Zalgiris Kaunas,93,79,1
+"Oct 17, 2023",EA7 Milano,Olympiacos Piraeus,65,53,1
+"Oct 18, 2023",Crvena Zvezda Belgrade,AS Monaco,76,82,0
+"Oct 18, 2023",Valencia Basket,Maccabi Tel Aviv,75,66,1
+"Oct 18, 2023",Segafredo Bologna,ALBA Berlin,87,76,1
+"Oct 19, 2023",Fenerbahce BEKO,LDLC ASVEL,101,86,1
+"Oct 19, 2023",Olympiacos Piraeus,Partizan,98,94,1
+"Oct 19, 2023",Baskonia,Zalgiris Kaunas,82,99,0
+"Oct 19, 2023",Real Madrid,EA7 Milano,88,71,1
+"Oct 20, 2023",AS Monaco,ALBA Berlin,86,75,1
+"Oct 20, 2023",Anadolu Efes Istanbul,Valencia Basket,77,73,1
+"Oct 20, 2023",Panathinaikos Athens,Maccabi Tel Aviv,81,86,0
+"Oct 20, 2023",Segafredo Bologna,Crvena Zvezda Belgrade,85,79,1
+"Oct 20, 2023",FC Barcelona,FC Bayern München,98,59,1
+"Oct 26, 2023",Partizan,Crvena Zvezda Belgrade,88,86,1
+"Oct 26, 2023",ALBA Berlin,EA7 Milano,85,82,1
+"Oct 26, 2023",Real Madrid,FC Barcelona,65,64,1
+"Oct 26, 2023",AS Monaco,Maccabi Tel Aviv,107,79,1
+"Oct 26, 2023",Olympiacos Piraeus,Anadolu Efes Istanbul,75,57,1
+"Oct 27, 2023",Zalgiris Kaunas,Valencia Basket,72,87,0
+"Oct 27, 2023",LDLC ASVEL,Segafredo Bologna,84,87,0
+"Oct 27, 2023",Panathinaikos Athens,Baskonia,95,81,1
+"Oct 27, 2023",FC Bayern München,Fenerbahce BEKO,67,76,0
+"Oct 31, 2023",EA7 Milano,Maccabi Tel Aviv,90,98,0
+"Nov 2, 2023",Crvena Zvezda Belgrade,FC Bayern München,74,68,1
+"Nov 2, 2023",Fenerbahce BEKO,Olympiacos Piraeus,79,77,1
+"Nov 2, 2023",Zalgiris Kaunas,LDLC ASVEL,88,91,0
+"Nov 2, 2023",EA7 Milano,AS Monaco,66,72,0
+"Nov 2, 2023",Valencia Basket,ALBA Berlin,79,71,1
+"Nov 3, 2023",Segafredo Bologna,Anadolu Efes Istanbul,93,81,1
+"Nov 3, 2023",Baskonia,Partizan,84,83,1
+"Nov 3, 2023",FC Barcelona,Panathinaikos Athens,80,72,1
+"Nov 9, 2023",Olympiacos Piraeus,Baskonia,74,75,0
+"Nov 9, 2023",Anadolu Efes Istanbul,Zalgiris Kaunas,86,82,1
+"Nov 9, 2023",Maccabi Tel Aviv,FC Bayern München,93,90,1
+"Nov 9, 2023",Partizan,Fenerbahce BEKO,85,84,1
+"Nov 9, 2023",EA7 Milano,Valencia Basket,83,52,1
+"Nov 9, 2023",Real Madrid,Segafredo Bologna,100,74,1
+"Nov 10, 2023",ALBA Berlin,Panathinaikos Athens,85,99,0
+"Nov 10, 2023",FC Barcelona,Crvena Zvezda Belgrade,86,81,1
+"Nov 10, 2023",AS Monaco,LDLC ASVEL,80,70,1
+"Nov 14, 2023",AS Monaco,Anadolu Efes Istanbul,82,89,0
+"Nov 14, 2023",Maccabi Tel Aviv,Olympiacos Piraeus,74,79,0
+"Nov 14, 2023",Segafredo Bologna,EA7 Milano,86,79,1
+"Nov 14, 2023",Valencia Basket,Real Madrid,73,76,0
+"Nov 14, 2023",Crvena Zvezda Belgrade,Fenerbahce BEKO,87,56,1
+"Nov 15, 2023",ALBA Berlin,LDLC ASVEL,68,73,0
+"Nov 15, 2023",Panathinaikos Athens,Zalgiris Kaunas,73,71,1
+"Nov 15, 2023",Baskonia,FC Barcelona,94,71,1
+"Nov 15, 2023",FC Bayern München,Partizan,94,85,1
+"Nov 16, 2023",Maccabi Tel Aviv,Fenerbahce BEKO,78,73,1
+"Nov 16, 2023",Olympiacos Piraeus,Crvena Zvezda Belgrade,88,83,1
+"Nov 16, 2023",EA7 Milano,Anadolu Efes Istanbul,92,76,1
+"Nov 16, 2023",Real Madrid,AS Monaco,91,73,1
+"Nov 17, 2023",Zalgiris Kaunas,FC Bayern München,74,73,1
+"Nov 17, 2023",LDLC ASVEL,Baskonia,81,88,0
+"Nov 17, 2023",Panathinaikos Athens,Segafredo Bologna,90,76,1
+"Nov 17, 2023",FC Barcelona,Valencia Basket,74,70,1
+"Nov 17, 2023",Partizan,ALBA Berlin,89,74,1
+"Nov 23, 2023",LDLC ASVEL,FC Bayern München,100,101,0
+"Nov 23, 2023",Maccabi Tel Aviv,FC Barcelona,90,92,0
+"Nov 23, 2023",Panathinaikos Athens,Valencia Basket,90,73,1
+"Nov 23, 2023",Segafredo Bologna,Fenerbahce BEKO,87,79,1
+"Nov 23, 2023",Real Madrid,ALBA Berlin,99,75,1
+"Nov 24, 2023",Anadolu Efes Istanbul,Partizan,100,94,1
+"Nov 24, 2023",Olympiacos Piraeus,Zalgiris Kaunas,89,72,1
+"Nov 24, 2023",Baskonia,AS Monaco,75,77,0
+"Nov 24, 2023",Crvena Zvezda Belgrade,EA7 Milano,71,93,0
+"Nov 28, 2023",Maccabi Tel Aviv,Real Madrid,70,99,0
+"Nov 30, 2023",Fenerbahce BEKO,Real Madrid,100,99,1
+"Nov 30, 2023",AS Monaco,Olympiacos Piraeus,85,77,1
+"Nov 30, 2023",Maccabi Tel Aviv,ALBA Berlin,102,81,1
+"Nov 30, 2023",EA7 Milano,Zalgiris Kaunas,70,83,0
+"Nov 30, 2023",FC Bayern München,Segafredo Bologna,90,76,1
+"Nov 30, 2023",Partizan,Panathinaikos Athens,92,87,1
+"Dec 1, 2023",Crvena Zvezda Belgrade,Anadolu Efes Istanbul,97,83,1
+"Dec 1, 2023",Valencia Basket,Baskonia,84,98,0
+"Dec 1, 2023",FC Barcelona,LDLC ASVEL,101,92,1
+"Dec 5, 2023",Anadolu Efes Istanbul,Panathinaikos Athens,71,68,1
+"Dec 5, 2023",ALBA Berlin,Zalgiris Kaunas,64,62,1
+"Dec 5, 2023",Olympiacos Piraeus,Real Madrid,71,77,0
+"Dec 5, 2023",Partizan,AS Monaco,89,85,1
+"Dec 5, 2023",FC Bayern München,EA7 Milano,91,84,1
+"Dec 6, 2023",LDLC ASVEL,Maccabi Tel Aviv,91,94,0
+"Dec 6, 2023",Segafredo Bologna,FC Barcelona,80,75,1
+"Dec 6, 2023",Valencia Basket,Crvena Zvezda Belgrade,85,81,1
+"Dec 6, 2023",Baskonia,Fenerbahce BEKO,80,79,1
+"Dec 7, 2023",ALBA Berlin,Anadolu Efes Istanbul,89,97,0
+"Dec 7, 2023",Panathinaikos Athens,Real Madrid,78,90,0
+"Dec 7, 2023",Partizan,EA7 Milano,82,69,1
+"Dec 8, 2023",Zalgiris Kaunas,AS Monaco,79,83,0
+"Dec 8, 2023",Olympiacos Piraeus,FC Bayern München,77,69,1
+"Dec 8, 2023",Segafredo Bologna,Maccabi Tel Aviv,100,90,1
+"Dec 8, 2023",Baskonia,Crvena Zvezda Belgrade,87,85,1
+"Dec 8, 2023",FC Barcelona,Fenerbahce BEKO,89,81,1
+"Dec 8, 2023",LDLC ASVEL,Valencia Basket,55,78,0
+"Dec 14, 2023",Zalgiris Kaunas,Partizan,85,93,0
+"Dec 14, 2023",Crvena Zvezda Belgrade,ALBA Berlin,85,71,1
+"Dec 14, 2023",Maccabi Tel Aviv,Anadolu Efes Istanbul,95,86,1
+"Dec 14, 2023",Baskonia,Segafredo Bologna,81,91,0
+"Dec 14, 2023",Real Madrid,FC Bayern München,88,73,1
+"Dec 14, 2023",LDLC ASVEL,Panathinaikos Athens,81,89,0
+"Dec 15, 2023",Fenerbahce BEKO,AS Monaco,86,74,1
+"Dec 15, 2023",Olympiacos Piraeus,Valencia Basket,56,63,0
+"Dec 15, 2023",FC Barcelona,EA7 Milano,86,90,0
+"Dec 19, 2023",Crvena Zvezda Belgrade,Real Madrid,58,72,0
+"Dec 19, 2023",ALBA Berlin,FC Barcelona,74,70,1
+"Dec 19, 2023",Maccabi Tel Aviv,Baskonia,89,81,1
+"Dec 19, 2023",Segafredo Bologna,Olympiacos Piraeus,69,67,1
+"Dec 19, 2023",Valencia Basket,Partizan,67,72,0
+"Dec 20, 2023",Fenerbahce BEKO,Zalgiris Kaunas,80,78,1
+"Dec 20, 2023",AS Monaco,Panathinaikos Athens,90,91,0
+"Dec 20, 2023",FC Bayern München,Anadolu Efes Istanbul,86,71,1
+"Dec 20, 2023",EA7 Milano,LDLC ASVEL,84,61,1
+"Dec 21, 2023",Maccabi Tel Aviv,Crvena Zvezda Belgrade,92,98,0
+"Dec 21, 2023",Valencia Basket,Segafredo Bologna,79,71,1
+"Dec 21, 2023",Real Madrid,Partizan,91,75,1
+"Dec 22, 2023",Anadolu Efes Istanbul,Baskonia,80,87,0
+"Dec 22, 2023",Zalgiris Kaunas,FC Barcelona,80,85,0
+"Dec 22, 2023",LDLC ASVEL,Olympiacos Piraeus,73,85,0
+"Dec 22, 2023",ALBA Berlin,Fenerbahce BEKO,82,91,0
+"Dec 22, 2023",FC Bayern München,AS Monaco,80,91,0
+"Dec 22, 2023",EA7 Milano,Panathinaikos Athens,68,76,0
+"Dec 28, 2023",Anadolu Efes Istanbul,Fenerbahce BEKO,84,89,0
+"Dec 28, 2023",Partizan,Segafredo Bologna,75,77,0
+"Dec 28, 2023",Zalgiris Kaunas,Maccabi Tel Aviv,70,78,0
+"Dec 28, 2023",LDLC ASVEL,Real Madrid,76,77,0
+"Dec 28, 2023",Panathinaikos Athens,Crvena Zvezda Belgrade,82,65,1
+"Dec 28, 2023",EA7 Milano,Baskonia,76,67,1
+"Dec 28, 2023",FC Bayern München,Valencia Basket,85,84,1
+"Dec 29, 2023",ALBA Berlin,Olympiacos Piraeus,67,94,0
+"Dec 29, 2023",AS Monaco,FC Barcelona,91,71,1
+"Jan 2, 2024",Fenerbahce BEKO,Crvena Zvezda Belgrade,76,85,0
+"Jan 2, 2024",Zalgiris Kaunas,ALBA Berlin,77,71,1
+"Jan 2, 2024",Maccabi Tel Aviv,AS Monaco,93,83,1
+"Jan 2, 2024",Olympiacos Piraeus,EA7 Milano,79,74,1
+"Jan 2, 2024",Partizan,LDLC ASVEL,90,77,1
+"Jan 3, 2024",Valencia Basket,Anadolu Efes Istanbul,93,88,1
+"Jan 3, 2024",Segafredo Bologna,FC Bayern München,85,83,1
+"Jan 3, 2024",Baskonia,Panathinaikos Athens,75,73,1
+"Jan 3, 2024",FC Barcelona,Real Madrid,83,78,1
+"Jan 4, 2024",Fenerbahce BEKO,Maccabi Tel Aviv,109,74,1
+"Jan 4, 2024",LDLC ASVEL,Zalgiris Kaunas,93,79,1
+"Jan 4, 2024",Crvena Zvezda Belgrade,Partizan,88,72,1
+"Jan 4, 2024",Olympiacos Piraeus,AS Monaco,75,73,1
+"Jan 5, 2024",ALBA Berlin,Segafredo Bologna,68,83,0
+"Jan 5, 2024",Valencia Basket,Panathinaikos Athens,81,82,0
+"Jan 5, 2024",FC Barcelona,Baskonia,89,85,1
+"Jan 5, 2024",EA7 Milano,FC Bayern München,76,62,1
+"Jan 5, 2024",Real Madrid,Anadolu Efes Istanbul,130,126,1
+"Jan 9, 2024",Fenerbahce BEKO,Partizan,91,76,1
+"Jan 9, 2024",AS Monaco,Baskonia,93,83,1
+"Jan 9, 2024",FC Bayern München,Real Madrid,71,92,0
+"Jan 9, 2024",Panathinaikos Athens,Anadolu Efes Istanbul,83,76,1
+"Jan 9, 2024",EA7 Milano,ALBA Berlin,82,76,1
+"Jan 9, 2024",Valencia Basket,Zalgiris Kaunas,79,84,0
+"Jan 9, 2024",LDLC ASVEL,Crvena Zvezda Belgrade,100,91,1
+"Jan 10, 2024",FC Barcelona,Olympiacos Piraeus,86,78,1
+"Jan 10, 2024",Maccabi Tel Aviv,Segafredo Bologna,95,78,1
+"Jan 11, 2024",Fenerbahce BEKO,FC Bayern München,98,91,1
+"Jan 11, 2024",Panathinaikos Athens,AS Monaco,88,63,1
+"Jan 11, 2024",EA7 Milano,Crvena Zvezda Belgrade,62,76,0
+"Jan 11, 2024",Real Madrid,Valencia Basket,96,86,1
+"Jan 12, 2024",Anadolu Efes Istanbul,Segafredo Bologna,99,75,1
+"Jan 12, 2024",Partizan,Maccabi Tel Aviv,88,79,1
+"Jan 12, 2024",Baskonia,Olympiacos Piraeus,80,69,1
+"Jan 12, 2024",FC Barcelona,Zalgiris Kaunas,91,73,1
+"Jan 12, 2024",LDLC ASVEL,ALBA Berlin,63,88,0
+"Jan 18, 2024",Anadolu Efes Istanbul,FC Barcelona,98,74,1
+"Jan 18, 2024",Crvena Zvezda Belgrade,Baskonia,90,91,0
+"Jan 18, 2024",ALBA Berlin,FC Bayern München,65,82,0
+"Jan 18, 2024",Olympiacos Piraeus,Maccabi Tel Aviv,89,72,1
+"Jan 18, 2024",Segafredo Bologna,LDLC ASVEL,73,63,1
+"Jan 19, 2024",Zalgiris Kaunas,Fenerbahce BEKO,98,75,1
+"Jan 19, 2024",AS Monaco,Real Madrid,98,74,1
+"Jan 19, 2024",Panathinaikos Athens,Partizan,84,71,1
+"Jan 19, 2024",Valencia Basket,EA7 Milano,84,72,1
+"Jan 25, 2024",Fenerbahce BEKO,Segafredo Bologna,88,75,1
+"Jan 25, 2024",ALBA Berlin,Crvena Zvezda Belgrade,89,80,1
+"Jan 25, 2024",Maccabi Tel Aviv,Panathinaikos Athens,90,75,1
+"Jan 25, 2024",FC Bayern München,LDLC ASVEL,64,76,0
+"Jan 25, 2024",Real Madrid,Olympiacos Piraeus,90,85,1
+"Jan 26, 2024",Anadolu Efes Istanbul,AS Monaco,78,80,0
+"Jan 26, 2024",Baskonia,Valencia Basket,62,77,0
+"Jan 26, 2024",Partizan,Zalgiris Kaunas,81,72,1
+"Jan 26, 2024",EA7 Milano,FC Barcelona,74,70,1
+"Jan 30, 2024",LDLC ASVEL,Fenerbahce BEKO,73,83,0
+"Jan 30, 2024",Crvena Zvezda Belgrade,Valencia Basket,82,64,1
+"Jan 30, 2024",FC Bayern München,Baskonia,112,109,1
+"Jan 30, 2024",Olympiacos Piraeus,ALBA Berlin,101,87,1
+"Jan 30, 2024",Real Madrid,Maccabi Tel Aviv,106,101,1
+"Jan 31, 2024",Zalgiris Kaunas,Anadolu Efes Istanbul,96,70,1
+"Jan 31, 2024",AS Monaco,Partizan,85,70,1
+"Jan 31, 2024",Panathinaikos Athens,EA7 Milano,79,62,1
+"Jan 31, 2024",FC Barcelona,Segafredo Bologna,84,57,1
+"Feb 1, 2024",ALBA Berlin,Valencia Basket,66,81,0
+"Feb 1, 2024",Baskonia,Maccabi Tel Aviv,92,82,1
+"Feb 1, 2024",FC Bayern München,Olympiacos Piraeus,72,76,0
+"Feb 1, 2024",Real Madrid,LDLC ASVEL,86,79,1
+"Feb 2, 2024",Anadolu Efes Istanbul,EA7 Milano,79,73,1
+"Feb 2, 2024",Zalgiris Kaunas,Panathinaikos Athens,80,68,1
+"Feb 2, 2024",Crvena Zvezda Belgrade,FC Barcelona,76,85,0
+"Feb 2, 2024",Segafredo Bologna,Partizan,88,84,1
+"Feb 2, 2024",AS Monaco,Fenerbahce BEKO,76,69,1
+"Feb 8, 2024",Anadolu Efes Istanbul,Maccabi Tel Aviv,105,91,1
+"Feb 8, 2024",Baskonia,LDLC ASVEL,94,80,1
+"Feb 8, 2024",Partizan,FC Bayern München,78,79,0
+"Feb 8, 2024",Valencia Basket,Olympiacos Piraeus,65,78,0
+"Feb 8, 2024",EA7 Milano,Real Madrid,81,76,1
+"Feb 9, 2024",Crvena Zvezda Belgrade,Zalgiris Kaunas,91,93,0
+"Feb 9, 2024",Panathinaikos Athens,Fenerbahce BEKO,74,63,1
+"Feb 9, 2024",Segafredo Bologna,AS Monaco,78,81,0
+"Feb 9, 2024",FC Barcelona,ALBA Berlin,93,77,1
+"Feb 29, 2024",ALBA Berlin,Maccabi Tel Aviv,71,106,0
+"Feb 29, 2024",Segafredo Bologna,Valencia Basket,87,74,1
+"Feb 29, 2024",Partizan,Anadolu Efes Istanbul,100,90,1
+"Feb 29, 2024",Real Madrid,Panathinaikos Athens,86,97,0
+"Mar 1, 2024",Fenerbahce BEKO,Baskonia,111,96,1
+"Mar 1, 2024",Zalgiris Kaunas,Olympiacos Piraeus,76,95,0
+"Mar 1, 2024",LDLC ASVEL,EA7 Milano,81,77,1
+"Mar 1, 2024",FC Bayern München,Crvena Zvezda Belgrade,74,66,1
+"Mar 1, 2024",FC Barcelona,AS Monaco,67,77,0
+"Mar 7, 2024",Anadolu Efes Istanbul,FC Bayern München,109,86,1
+"Mar 7, 2024",AS Monaco,Crvena Zvezda Belgrade,98,80,1
+"Mar 7, 2024",Maccabi Tel Aviv,Zalgiris Kaunas,83,76,1
+"Mar 7, 2024",Valencia Basket,FC Barcelona,78,88,0
+"Mar 7, 2024",Real Madrid,Fenerbahce BEKO,79,89,0
+"Mar 7, 2024",Olympiacos Piraeus,Segafredo Bologna,74,69,1
+"Mar 8, 2024",Panathinaikos Athens,LDLC ASVEL,85,67,1
+"Mar 8, 2024",Baskonia,ALBA Berlin,88,71,1
+"Mar 8, 2024",EA7 Milano,Partizan,85,83,1
+"Mar 14, 2024",Fenerbahce BEKO,Valencia Basket,118,88,1
+"Mar 14, 2024",Olympiacos Piraeus,Panathinaikos Athens,71,65,1
+"Mar 14, 2024",Crvena Zvezda Belgrade,Maccabi Tel Aviv,80,84,0
+"Mar 14, 2024",ALBA Berlin,AS Monaco,82,90,0
+"Mar 14, 2024",Baskonia,EA7 Milano,88,73,1
+"Mar 14, 2024",FC Barcelona,Partizan,94,76,1
+"Mar 15, 2024",LDLC ASVEL,Anadolu Efes Istanbul,84,80,1
+"Mar 15, 2024",FC Bayern München,Zalgiris Kaunas,64,58,1
+"Mar 15, 2024",Segafredo Bologna,Real Madrid,74,89,0
+"Mar 19, 2024",Anadolu Efes Istanbul,Olympiacos Piraeus,85,72,1
+"Mar 19, 2024",Zalgiris Kaunas,Segafredo Bologna,96,81,1
+"Mar 19, 2024",ALBA Berlin,Real Madrid,79,86,0
+"Mar 19, 2024",Maccabi Tel Aviv,LDLC ASVEL,98,90,1
+"Mar 19, 2024",Partizan,Baskonia,87,83,1
+"Mar 20, 2024",Fenerbahce BEKO,FC Barcelona,88,74,1
+"Mar 20, 2024",AS Monaco,EA7 Milano,80,98,0
+"Mar 20, 2024",Crvena Zvezda Belgrade,Panathinaikos Athens,76,89,0
+"Mar 20, 2024",Valencia Basket,FC Bayern München,70,68,1
+"Mar 21, 2024",Anadolu Efes Istanbul,ALBA Berlin,85,84,1
+"Mar 21, 2024",Zalgiris Kaunas,Baskonia,94,76,1
+"Mar 21, 2024",Olympiacos Piraeus,LDLC ASVEL,80,64,1
+"Mar 21, 2024",Partizan,Real Madrid,76,88,0
+"Mar 22, 2024",Crvena Zvezda Belgrade,Segafredo Bologna,94,79,1
+"Mar 22, 2024",AS Monaco,Valencia Basket,79,78,1
+"Mar 22, 2024",Panathinaikos Athens,FC Barcelona,89,81,1
+"Mar 22, 2024",FC Bayern München,Maccabi Tel Aviv,74,89,0
+"Mar 22, 2024",EA7 Milano,Fenerbahce BEKO,77,76,1
+"Mar 27, 2024",Maccabi Tel Aviv,Valencia Basket,95,80,1
+"Mar 28, 2024",Zalgiris Kaunas,EA7 Milano,87,73,1
+"Mar 28, 2024",FC Bayern München,FC Barcelona,79,87,0
+"Mar 28, 2024",Partizan,Olympiacos Piraeus,69,74,0
+"Mar 28, 2024",Baskonia,Anadolu Efes Istanbul,76,97,0
+"Mar 28, 2024",LDLC ASVEL,AS Monaco,77,87,0
+"Mar 29, 2024",Fenerbahce BEKO,ALBA Berlin,103,68,1
+"Mar 29, 2024",Segafredo Bologna,Panathinaikos Athens,79,81,0
+"Mar 29, 2024",Real Madrid,Crvena Zvezda Belgrade,101,94,1
+"Apr 4, 2024",Crvena Zvezda Belgrade,Olympiacos Piraeus,86,89,0
+"Apr 4, 2024",AS Monaco,Zalgiris Kaunas,69,66,1
+"Apr 4, 2024",FC Barcelona,Maccabi Tel Aviv,92,89,1
+"Apr 4, 2024",ALBA Berlin,Partizan,83,94,0
+"Apr 4, 2024",Valencia Basket,LDLC ASVEL,69,98,0
+"Apr 5, 2024",Fenerbahce BEKO,Anadolu Efes Istanbul,80,82,0
+"Apr 5, 2024",FC Bayern München,Panathinaikos Athens,75,82,0
+"Apr 5, 2024",EA7 Milano,Segafredo Bologna,90,75,1
+"Apr 5, 2024",Real Madrid,Baskonia,91,95,0
+"Apr 11, 2024",Zalgiris Kaunas,Real Madrid,62,64,0
+"Apr 11, 2024",AS Monaco,FC Bayern München,89,85,1
+"Apr 11, 2024",Anadolu Efes Istanbul,Crvena Zvezda Belgrade,100,55,1
+"Apr 11, 2024",Maccabi Tel Aviv,EA7 Milano,92,86,1
+"Apr 11, 2024",Panathinaikos Athens,ALBA Berlin,84,75,1
+"Apr 12, 2024",Olympiacos Piraeus,Fenerbahce BEKO,84,81,1
+"Apr 12, 2024",Partizan,Valencia Basket,79,66,1
+"Apr 12, 2024",Segafredo Bologna,Baskonia,91,95,0
+"Apr 12, 2024",LDLC ASVEL,FC Barcelona,76,72,1
+"Apr 16, 2024",Maccabi Tel Aviv,Baskonia,113,85,1
+"Apr 16, 2024",Anadolu Efes Istanbul,Segafredo Bologna,64,67,0
+"Apr 19, 2024",Baskonia,Segafredo Bologna,89,77,1
+"Apr 23, 2024",Panathinaikos Athens,Maccabi Tel Aviv,87,91,0
+"Apr 23, 2024",Real Madrid,Baskonia,90,74,1
+"Apr 24, 2024",AS Monaco,Fenerbahce BEKO,91,95,0
+"Apr 24, 2024",FC Barcelona,Olympiacos Piraeus,75,77,0
+"Apr 25, 2024",Panathinaikos Athens,Maccabi Tel Aviv,95,79,1
+"Apr 25, 2024",Real Madrid,Baskonia,101,90,1
+"Apr 26, 2024",AS Monaco,Fenerbahce BEKO,93,88,1
+"Apr 26, 2024",FC Barcelona,Olympiacos Piraeus,77,69,1
+"Apr 30, 2024",Maccabi Tel Aviv,Panathinaikos Athens,85,83,1
+"Apr 30, 2024",Olympiacos Piraeus,FC Barcelona,80,82,0
+"May 1, 2024",Fenerbahce BEKO,AS Monaco,89,78,1
+"May 1, 2024",Baskonia,Real Madrid,98,102,0
+"May 2, 2024",Olympiacos Piraeus,FC Barcelona,92,58,1
+"May 2, 2024",Maccabi Tel Aviv,Panathinaikos Athens,88,95,0
+"May 3, 2024",Fenerbahce BEKO,AS Monaco,62,65,0
+"May 7, 2024",Panathinaikos Athens,Maccabi Tel Aviv,81,72,1
+"May 8, 2024",AS Monaco,Fenerbahce BEKO,79,80,0
+"May 8, 2024",FC Barcelona,Olympiacos Piraeus,59,63,0
+"May 24, 2024",Panathinaikos Athens,Fenerbahce BEKO,73,57,1
+"May 24, 2024",Real Madrid,Olympiacos Piraeus,87,76,1
+"May 26, 2024",Olympiacos Piraeus,Fenerbahce BEKO,87,84,1
+"May 26, 2024",Real Madrid,Panathinaikos Athens,80,95,0

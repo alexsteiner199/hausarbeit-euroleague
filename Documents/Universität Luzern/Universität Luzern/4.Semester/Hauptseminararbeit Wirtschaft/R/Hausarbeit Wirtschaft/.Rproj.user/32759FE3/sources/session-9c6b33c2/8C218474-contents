@@ -1,0 +1,197 @@
+##############################################################################
+##############################################################################
+####################### Hausarbeit Wirtschaft ################################
+####################### Datensammlung         ################################
+##############################################################################
+##############################################################################
+
+# Kompletter R-Code wurde mithilfe von ChatGPT erstellt.
+
+# Code zum Sammeln der Spiele der Saisons 2000/01-2024/25.
+# Vorgehen: Folgenden Code jeweils für jede Saison einzeln ausführen, so, 
+# dass erst einmal 25 einzelne Dateien mit den Spieldaten der Saisons vorhanden
+# sind. Dies funktionier, indem man jeweils am Ende der URL die entsprechende
+# Jahreszahl angibt. Der Prozess liess sich leider nicht automatisieren.
+# Anschliessend sollen diese Dateien in einer grossen Datei zusammengefasst
+# werden und mit den nötigen Variablen ergänzt werden. In diesem ersten Datensatz
+# werden ersteinmal nur die Variablen ID, Home, Away, Punkte Heim, Punkte Gast und
+# Home_w (für Heimsieg=1) erstellt.
+# Die Zuschauerzahlen für die Saison 2024/25 wurden manuell in die CSV Datei eingetragen und stammen
+# aus dem Game Center der Website: euroleague.net
+# Die Budgetzahlen der Vereine für die Saison 2024/25 wurden auch von der 
+# Website euroleague.net importiert und mithilfe von R im Datensatz ergänzt.
+
+library(rvest)
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(tidyr)
+library(purrr)
+library(readr)
+library(tidyverse)
+
+url <- "https://www.proballers.com/basketball/league/177/euroleague/schedule/2024"
+
+page <- read_html(url)
+
+# Spieltabelle extrahieren
+games <- page %>%
+  html_nodes("table") %>%
+  html_table(fill = TRUE) %>%
+  .[[1]] # erste Tabelle nehmen
+
+# Daten bereinigen (abhängig vom Format!)
+head(games)
+
+##########################################################################
+
+# Beispiel: Daten einlesen, wenn noch nicht geschehen
+# alle_spiele <- read_csv("...deine_datei.csv")
+
+# 1. Time-Spalte löschen (falls vorhanden)
+games <- games %>%
+  select(-`Time (CET)`)
+
+# 2. Punkte extrahieren aus "Result" (z. B. "87-86")
+games <- games %>%
+  mutate(
+    `Punkte Heim` = as.numeric(stringr::str_extract(Result, "^\\d+")),
+    `Punkte Gast` = as.numeric(stringr::str_extract(Result, "\\d+$"))
+  )
+
+# 3. Home_W berechnen
+games <- games %>%
+  mutate(Home_W = ifelse(`Punkte Heim` > `Punkte Gast`, 1, 0))
+
+# 4. Aufräumen: Spalte "Result" optional löschen
+games <- games %>%
+  select(-Result)
+
+# 5. CSV speichern
+write_csv(games, "euroleague_season_2024-25.csv")
+
+###########################################################################
+
+# Nachdem wir nun die einzelnen Dateien erstellt haben, werden sie im folgenden
+# Schritt zu einer einzigen Datei zusammengeführt.
+
+
+
+# 📁 Verzeichnis, in dem die CSVs gespeichert sind (ggf. Pfad anpassen)
+data_path <- "C:/Users/Alexander Steiner/Documents/Universität Luzern/Universität Luzern/4.Semester/Hauptseminararbeit Wirtschaft/R/Hausarbeit Wirtschaft"
+
+# Alle Dateien mit passendem Muster laden
+file_list <- list.files(
+  path = data_path,
+  pattern = "^euroleague_season_\\d{4}-\\d{2}\\.csv$",
+  full.names = TRUE
+)
+
+
+# 📦 Alle Dateien einlesen und zusammenfügen
+euroleague_all_seasons <- file_list %>%
+  map_dfr(read_csv, .id = "Quelle") %>%  # .id erzeugt optional eine Spalte mit dem Dateinamen
+  mutate(Saison = str_extract(Quelle, "\\d{4}-\\d{2}")) %>%  # Saison aus Dateinamen extrahieren
+  select(-Quelle)  # Optional: Quelle-Spalte wieder entfernen
+
+# Datei speichern
+write.csv(euroleague_all_seasons, "euroleague_seasons_2000-2025.csv")
+
+#########################################################################
+
+# Datei erweitern mit Spalten für Saison, durchsschnittliche Zuschauerzahl, 
+# Punktedifferenz, Budget Gesamt und Budget Spieler.
+
+
+# Datensatz laden (falls nicht schon gemacht)
+df <- read_csv("euroleague_seasons_2000-2025.csv")
+
+
+df <- df %>%
+  mutate(
+    Date = mdy(Date),  # 👉 wichtig: amerikanisches Format
+    Saison = if_else(month(Date) >= 7,
+                     paste0(year(Date), "/", sprintf("%02d", (year(Date) + 1) %% 100)),
+                     paste0(year(Date) - 1, "/", sprintf("%02d", year(Date) %% 100)))
+  ) %>%
+  relocate(Saison, .after = Date) %>%   # Saison nach Datum
+  mutate(
+    Punktedifferenz = `Punkte Heim` - `Punkte Gast`,
+    Zuschauer = NA_real_,
+    Budget_Total = NA_real_,
+    Budget_Spieler = NA_real_
+  )
+
+write_csv(df, "euroleague_seasons_2000-2025.csv")
+
+#########################################################################
+
+
+# Übersicht über Anzahl NAs in Ergebnisvariablen
+df %>% 
+  summarise(
+    NAs_Punkte_Heim = sum(is.na(`Punkte Heim`)),
+    NAs_Punkte_Gast = sum(is.na(`Punkte Gast`)),
+    NAs_Punktedifferenz = sum(is.na(Punktedifferenz))
+  )
+
+# Es gibt 2 NAs in den Ergebnisvariablen
+
+df %>%
+  filter(is.na(`Punkte Heim`) | is.na(`Punkte Gast`) | is.na(Punktedifferenz))
+
+# Die beiden Spiele sind wohl beide nicht gespielt worden. Es lassen sich 
+# keine Ergebnisse finden. Um die Analysen nicht zu beeinflussen werden beide
+# Spiele aus den Daten gelöscht.
+
+df <- df %>%
+  filter(!is.na(`Punkte Heim`) & !is.na(`Punkte Gast`) & !is.na(Punktedifferenz))
+
+# Bereinigten Datensatz speichern
+
+write_csv(df, "euroleague_seasons_2000-2025_final.csv")
+
+#########################################################################
+
+# Nun wurden die Zuschauerzahlen für die Saison 2024/25 manuell eingefügt.
+# Die letzten vier Spiele der Saison haben für Zuschauer den Wert NA, da
+# es sich um das Final Four handelt, welches in einer neutralen Spielstätte
+# stattfindet und somit keinen Einfluss auf den Heimvorteil hat. 
+# Im Folgenden sollen die Budgets die die Vereine für die Spieler zur Verfügung
+# hatten und die totalen Budgets inkludiert werden. Dabei wurde immer 
+# das Budget des Heimteams eingetragen.
+
+
+budget_2024 <- tibble::tribble(
+  ~Home,                  ~Budget_Total, ~Budget_Spieler,
+  "Real Madrid",               45.0,          20.5,
+  "Panathinaikos Athens",      37.0,          20.5,  
+  "Olympiacos Piraeus",        37.0,          20.5,
+  "Anadolu Efes Istanbul",     34.5,          17.2,
+  "Fenerbahce BEKO",           33.5,          16.5,
+  "FC Barcelona",              32.0,          15.5,
+  "EA7 Milano",                39.0,          14.5,
+  "Crvena Zvezda Belgrade",    22.0,          14.4,
+  "AS Monaco",                 29.4,          13.5,
+  "Partizan",                  23.0,          13.2,
+  "Segafredo Bologna",         25.0,          10.0,
+  "FC Bayern MÃ¼nchen",        33.0,           8.0,
+  "Baskonia",                  14.0,           8.0,
+  "Zalgiris Kaunas",           17.7,           7.5,
+  "Maccabi Tel Aviv",          19.0,           6.5,
+  "LDLC ASVEL",                16.2,           5.8,
+  "Paris Basketball",          18.9,           5.6,
+  "ALBA Berlin",               14.6,           4.1
+)
+
+df <- df %>%
+  left_join(budget_2024, by = c("Home" = "Home")) %>%
+  mutate(
+    Budget_Total = if_else(Saison == "2024/25", Budget_Total.y, Budget_Total.x),
+    Budget_Spieler = if_else(Saison == "2024/25", Budget_Spieler.y, Budget_Spieler.x)
+  ) %>%
+  select(-Budget_Total.x, -Budget_Total.y, -Budget_Spieler.x, -Budget_Spieler.y)
+
+write.csv("euroleague_seasons_2000-2025_final.csv")
+
+

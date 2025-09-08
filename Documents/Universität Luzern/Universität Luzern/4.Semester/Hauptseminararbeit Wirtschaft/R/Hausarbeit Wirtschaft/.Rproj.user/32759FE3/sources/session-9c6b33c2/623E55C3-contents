@@ -1,0 +1,216 @@
+##############################################################################
+##############################################################################
+######################## Hausarbeit Wirtschaft ###############################
+######################## Homecourt Advantage   ###############################
+######################## Statistische Tests    ###############################
+##############################################################################
+##############################################################################
+
+# Der gesamte Code wurde mithilfe von ChatGPT geschrieben.
+
+
+library(dplyr)
+library(ggplot2)
+library(scales) 
+library(stargazer)
+
+
+
+
+# Daten einlesen
+df<- read.csv("euroleague_seasons_2000-2025_final.csv")
+
+# ✅ Heimsiegquote je Saison berechnen
+siegquote_df <- df %>%
+  group_by(Saison) %>%
+  summarise(
+    Heimsiegquote = mean(Home_W, na.rm = TRUE),
+    Spiele = n()
+  ) %>%
+  arrange(Saison)
+
+# ✅ Diagramm zeichnen
+ggplot(siegquote_df, aes(x = Saison, y = Heimsiegquote)) +
+  geom_col(fill = "#0072B2", width = 0.6) +  # ❗ schmalere Balken
+  scale_y_continuous(
+    labels = scales::percent_format(accuracy = 1),
+    limits = c(0, 1)  # ❗ Y-Achse von 0 bis 100 %
+  ) +
+  labs(
+    title = "Heimsiegwahrscheinlichkeiten pro Saison (2000–2025)",
+    x = "Saison",
+    y = "Heimsiegquote"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Diagramm speichern
+ggsave(
+  filename = "heimsiegwahrscheinlichkeit_pro_saison.png",
+  plot = last_plot(),       # oder dein Objektname, z. B. plot = p
+  width = 10, height = 6,   # in Zoll (kannst du anpassen)
+  dpi = 300                 # hohe Auflösung für Druck
+)
+
+###########################################################################
+
+# Diagramm für Punktedifferenz
+
+df %>%
+  group_by(Saison) %>%
+  summarise(Mittlere_Differenz = mean(Punktedifferenz, na.rm = TRUE)) %>%
+  ggplot(aes(x = Saison, y = Mittlere_Differenz, group = 1)) +
+  geom_line(color = "darkblue", size = 1) +
+  geom_point(color = "darkblue", size = 2) +
+  labs(
+    title = "Durchschnittliche Punktedifferenz der Heimteams pro Saison",
+    x = "Saison",
+    y = "Durchschnittliche Punktedifferenz"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
+  )
+
+ggsave("durchschnittliche_punktedifferenz.png", width = 10, height = 6, dpi = 300)
+
+###########################################################################
+
+# Hypothesentest für die Saisons 2000-2025
+
+# Funktion für den Binomialtest pro Saison
+heimvorteil_test <- df %>%
+  group_by(Saison) %>%
+  summarise(
+    heimspiele = sum(!is.na(Home_W)),
+    heimsiege = sum(Home_W == 1, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  rowwise() %>%
+  mutate(
+    test = list(binom.test(heimsiege, heimspiele, p = 0.5, alternative = "greater")),
+    heimsiegquote = heimsiege / heimspiele,
+    p_wert = test$p.value
+  ) %>%
+  select(Saison, heimspiele, heimsiege, heimsiegquote, p_wert)
+
+# Ergebnis ansehen
+heimvorteil_test
+
+# Output für Latex schön machen
+
+install.packages("kableExtra")
+library(knitr)
+library(kableExtra)
+
+# Tabelle als .tex speichern
+heimvorteil_test %>%
+  mutate(heimsiegquote = round(heimsiegquote*100, 1)) %>%
+  kable(format = "latex", booktabs = TRUE, caption = "Heimsiegquoten pro Saison in der Euroleague") %>%
+  save_kable("heimvorteil_tabelle.tex")
+
+########################################################################
+
+# Regression für Saison 2024/25
+
+# 📦 Pakete laden
+library(dplyr)
+
+# 1️⃣ Datensatz auf Saison 2024/25 filter. Die vier Spiele des Final Four
+# werden entfernt, da sie an einer neutralen Spielstätte ausgetragen wurden.
+
+df_2425 <- df %>%
+  filter(Saison == "2024/25") %>%
+  filter(!is.na(Zuschauer)) %>%          # NAs bei Zuschauer raus
+  filter(!is.na(Budget_Total)) %>%       # NAs bei Budget raus
+  filter(!is.na(Budget_Spieler))         # NAs bei Spielerbudget raus
+
+# 2️⃣ Überblick
+summary(df_2425)
+
+# 3️⃣ Regression: Punktedifferenz ~ Zuschauer + Budget_Spieler
+model <- lm(Punktedifferenz ~ Zuschauer + Budget_Spieler,
+            data = df_2425)
+
+# 4️⃣ Ergebnisse anzeigen
+summary(model)
+
+# 🔹 Logit-Modell: Heimsieg (1) vs. Auswärtssieg (0)
+
+
+# Logistische Regression
+model_logit <- glm(Home_W ~ Zuschauer + Budget_Spieler,
+                   data = df_2425,
+                   )
+
+# Ergebnisübersicht
+summary(model_logit)
+
+#########################################################################
+# Liste der abhängigen Variablen
+abh_var <- c("Home_W", "Punktedifferenz")
+
+# Liste der unabhängigen Variablen-Kombinationen
+indep_var <- list(
+  "Zuschauer",
+  "Budget_Spieler",
+  "Zuschauer + Budget_Spieler",
+  "Zuschauer * Budget_Spieler"
+)
+
+# Leere Liste für Ergebnisse
+results <- list()
+
+# Schleife über abhängige Variablen
+for (y in abh_var) {
+  
+  cat("====================================\n")
+  cat("Abhängige Variable:", y, "\n")
+  
+  for (x in indep_var) {
+    
+    # Formel erstellen
+    formula <- as.formula(paste(y, "~", x))
+    
+    # Modelltyp auswählen
+    if (y == "Home_W") {
+      model <- glm(formula, family = binomial(link = "logit"), data = df_2425)
+    } else {
+      model <- lm(formula, data = df_2425)
+    }
+    
+    # Modellzusammenfassung speichern
+    results[[paste(y, x, sep = "_")]] <- summary(model)
+    
+    # Ausgabe in Konsole
+    cat("------------------------------------\n")
+    cat("Unabhängige Variable(n):", x, "\n")
+    print(summary(model))
+  }
+
+  #####################################################################
+  # Tabelle für Latex
+  
+  
+  
+  # Modelle mit PunkteDiff (lineare Regression)
+  m1 <- lm(Punktedifferenz ~ Zuschauer, data = df_2425)
+  m2 <- lm(Punktedifferenz ~ Budget_Spieler, data = df_2425)
+  m3 <- lm(Punktedifferenz ~ Zuschauer + Budget_Spieler, data = df_2425)
+  
+  # LaTeX-Tabelle exportieren
+  stargazer(m1, m2, m3,
+            type = "latex",
+            title = "Regressionsergebnisse: Punktedifferenz",
+            dep.var.labels = "Punktedifferenz",
+            column.labels = c("(1)", "(2)", "(3)"),
+            covariate.labels = c("Zuschauer", "Budget Spieler"),
+            omit.stat = c("f","ser","aic","bic"), # nur die wichtigen Statistiken zeigen
+            no.space = TRUE,
+            out = "table_punktediff.tex")
+  
+
+
+
